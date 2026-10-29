@@ -1,86 +1,3 @@
-Claude
-/
-Bruno’s MacBook Air, Asleep or app closed
-Pasted text.txt
-Pasted text.txt
-TXT
-based on the media plan briefing, create a one pager media plan 
-/senior-media-planner
- 
-
-For reference Budgets Scenarios:
-A - 20,000 USD
-B - 35,000 USD
-C - 42,000 USD
-
-heavy focus on brandformance, awareness generation and consideration leading to visits and sign ups.
-
-Come up with estimated impact results for Impressios and CTRs, CPM, CPC of the platforms listed as part of the media plan.
-
-For the outcome material in html navitational, use the Jupiter design system already in this project.
-
-Planning a one-page media plan layout.
-Planning a one-page media plan layout.
-I’ll build the Jupiter.fun one-pager media plan with three budget scenarios and estimated delivery per platform, styled with the project’s Jupiter design system.
-
-Created a file, used artifacts, and 2 more steps
-Jupiter.fun Media Plan
-Artifact
-·Only you
-The one-pager is published in the Jupiter Trade look. A sticky nav covers Overview, Allocation, Channel estimates, Scenarios, 30-day flight and Risks & KPIs, and an A/B/C switch updates every number on the page.
-
-Estimated delivery over an assumed 30-day flight
-
-A · $20k	B · $35k (recommended)	C · $42k
-Impressions	4.19M	7.33M	8.55M
-Blended CPM	$4.77	$4.78	$4.91
-Blended CTR	0.63%	0.59%	0.57%
-Blended CPC	$0.76	$0.81	$0.86
-Sign-ups	~1,230	~1,820	~2,000
-CPA	$16.24	$19.23	$21.03
-Awareness + consideration share	78%	82%	84%
-Allocation: the share going to awareness rises with budget, because retargeting volume is limited by how much traffic the upper funnel sends.
-Marginal cost: going from B to C costs about $39 per extra sign-up, against roughly $25 from A to B. That is why B is the recommendation.
-Reddit CTR target: the brief’s 2.0% is above what Reddit typically delivers. The plan models 0.6% for feed ads and 0.85% for conversation ads, and suggests 0.8% blended as the KPI.
-Ad policy: I listed this as a high risk. All four platforms restrict ads about crypto, leverage, and wager or bet language. Copy should lead with simulator and testnet framing, and the 1,000× claims should be cleared with each platform before launch.
-The benchmarks assume tier-1 English-speaking markets. If the plan should target other markets such as LATAM, the CPMs would change noticeably.
-
-The page is private until you share it from its Share menu.
-
-as appendix, use 
-/design-ads
- skill and create some examples, mockups of the ads for each platform. make it interative like using the platform name and a CTA 'clicks to see ads example' and display those ads.
-
-Edited a file, ran a command, used artifacts
-Jupiter.fun Media Plan
-Artifact
-·Only you
-The media plan now has an Appendix · Ad examples section, linked from the nav. It has seven platform cards, each labelled “Click to see ad examples”. Clicking a card opens its mockups next to a short creative brief covering funnel stage, hook, emotional trigger, CTA and the first A/B test.
-
-Taboola: a below-article widget with a crypto-only and a cross-asset (NVDA + BTC) headline, plus an advertorial header.
-Reddit feed: a 1:1 image post and a 6-second 9:16 video for r/WallStreetBets.
-Reddit conversation: a promoted card placed inside an options thread, picking up the thread’s own question.
-Quora: a promoted answer to “best paper trading platforms for crypto”, plus an image ad.
-PMax prospecting: an 8-second YouTube Shorts storyboard in three frames, plus a 300×250 responsive display ad.
-PMax retargeting: a brand search ad and a 1:1 remarketing ad (“Your trading terminal is ready”).
-AdRoll: a 300×250 ad for bouncers, plus 160×600 and 728×90 dynamic ads that show the last asset viewed.
-Every ad uses the Jupiter look and shows a small terminal visual with a live-style chart. The copy uses “practice”, “testnet” and “no real funds” and avoids “wager”, to match the policy risk flagged in the plan. The platform frames are neutral stand-ins, not copies of each platform’s real interface.
-
-great, give me the html
-
-Shared a file, ran 2 commands
-Here’s jupiter-media-plan.html, a single file that opens in any browser, with all the CSS and JavaScript inside it. It has the plan, the A/B/C scenario switch and the interactive ad appendix. The only outside resource is the DM Sans font from Google Fonts; offline, it falls back to the system font.
-
-Jupiter media plan
-Code
-·HTML
-Claude is AI and can make mistakes.
-
-
-
-
-
-Jupiter media plan · HTML
 <!doctype html>
 <html lang="en">
 <head>
@@ -123,7 +40,11 @@ nav.sec a:hover,nav.sec a:focus-visible{background:var(--bg-300);color:var(--fg-
 .seg button:focus-visible,nav.sec a:focus-visible{box-shadow:0 0 0 2px var(--bg-000),0 0 0 4px var(--lime-500)}
 main{display:grid;gap:32px;padding-block:32px 64px}
 section{scroll-margin-top:80px}
-h1{font-weight:500;font-size:clamp(30px,5vw,44px);line-height:1.1;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.display{font-weight:500;font-size:clamp(30px,5vw,44px);line-height:1.1;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.masthead{background:var(--bg-000);border-bottom:1px solid var(--line-100)}
+.masthead .wrap{padding-block:20px}
+.masthead h1{margin:0;font-weight:600;font-size:clamp(20px,3vw,28px);line-height:1.2;letter-spacing:-.01em;text-wrap:balance}
+.masthead h1 span{color:var(--lime-500)}
 h2{font-weight:500;font-size:22px;line-height:28px;margin:0 0 4px;text-wrap:balance}
 .sub{color:var(--fg-200);margin:0 0 16px;max-width:68ch}
 .eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-200);font-weight:500}
@@ -253,7 +174,8 @@ footer{color:var(--fg-300);font-size:12px;border-top:1px solid var(--line-100);p
 </style>
 </head>
 <body>
- 
+
+<div class="masthead"><div class="wrap"><h1>Full-Funnel Paid Media Strategy Briefing: <span>Jupiter.fun</span></h1></div></div>
 <div class="strip"><b>Planning document</b> · Estimates based on market benchmarks · Not delivery guarantees</div>
 <header class="top">
   <div class="wrap">
@@ -268,12 +190,12 @@ footer{color:var(--fg-300);font-size:12px;border-top:1px solid var(--line-100);p
     </div>
   </div>
 </header>
- 
+
 <main class="wrap">
   <section id="overview" class="hero">
     <div>
       <div class="eyebrow">Brandformance media plan · 30-day flight · Prepared by AdRoq</div>
-      <h1>Build awareness that turns into testnet sign-ups</h1>
+      <h2 class="display">Build awareness that turns into testnet sign-ups</h2>
       <p>Around 80% of spend sits in awareness and consideration across Taboola, Reddit, Quora and Google PMax. A lean retargeting layer on AdRoll and PMax converts the demand those channels create. Scenario <b id="heroSc" class="hl">B</b> is selected; switch above to compare.</p>
       <div class="chips">
         <span class="chip on">Crypto degens 18–38</span><span class="chip on">Retail equity traders 22–45</span><span class="chip">BTC · SOL · NVDA · TSLA</span><span class="chip">Up to 1,000× on testnet</span>
@@ -281,20 +203,20 @@ footer{color:var(--fg-300);font-size:12px;border-top:1px solid var(--line-100);p
     </div>
     <div class="kpis" id="heroKpis"></div>
   </section>
- 
+
   <section class="thesis" aria-label="Planning thesis">
     <div class="panel"><span class="tag"><i class="dot" style="background:var(--tofu)"></i>Awareness · creates demand</span><h3>Own the trading feed</h3><p>Taboola on financial and crypto publishers plus Reddit feed in WSB, CryptoCurrency and Solana. Cheap reach, scored on CPM and CTR, and the audience pool every lower stage depends on.</p></div>
     <div class="panel"><span class="tag"><i class="dot" style="background:var(--mofu)"></i>Consideration · captures intent</span><h3>Answer the paper-trading question</h3><p>Quora on paper-trading and leverage questions, Reddit conversation placements, and PMax custom-intent signals. Scored on qualified visits and first testnet trade.</p></div>
     <div class="panel"><span class="tag"><i class="dot" style="background:var(--bofu)"></i>Conversion · harvests</span><h3>Close the visit</h3><p>AdRoll dynamic banners by asset viewed, plus PMax on first-party lists and brand terms. Capped near 18% of spend because its volume is limited by the traffic upstream.</p></div>
   </section>
- 
+
   <section id="allocation" class="panel">
     <h2>Funnel allocation</h2>
     <p class="sub">Spend weighted toward demand creation. The share of top-funnel rises with budget, because extra dollars buy reach while the retargeting pool grows more slowly.</p>
     <div class="fbar" id="fbar" aria-hidden="true"></div>
     <div class="legend" id="legend"></div>
   </section>
- 
+
   <section id="channels">
     <h2>Channel estimates</h2>
     <p class="sub">Delivery for the selected scenario. Sign-up ranges are ±25% around the point estimate. Visits assume 75–90% click-to-session match by channel.</p>
@@ -304,7 +226,7 @@ footer{color:var(--fg-300);font-size:12px;border-top:1px solid var(--line-100);p
       <tfoot><tr id="tfoot"></tr></tfoot>
     </table></div>
   </section>
- 
+
   <section id="scenarios">
     <h2>Scenario comparison</h2>
     <p class="sub">More budget buys more reach, with rising cost per sign-up. The marginal CPA shows what each extra tier costs per added user.</p>
@@ -314,7 +236,7 @@ footer{color:var(--fg-300);font-size:12px;border-top:1px solid var(--line-100);p
       <div class="panel"><div class="eyebrow">Sign-ups by scenario</div><div class="bars" id="barSu"></div></div>
     </div>
   </section>
- 
+
   <section id="flight" class="panel">
     <h2>30-day flight</h2>
     <p class="sub">Front-load reach so the retargeting pools exist before conversion spend ramps. Same shape for all three scenarios.</p>
@@ -325,7 +247,7 @@ footer{color:var(--fg-300);font-size:12px;border-top:1px solid var(--line-100);p
       <div class="ph"><span class="w">Days 23–30</span><span class="t">Harvest and learn</span><div class="mix"><i style="flex:38;background:var(--tofu)"></i><i style="flex:36;background:var(--mofu)"></i><i style="flex:26;background:var(--bofu)"></i></div><p>Scale the channels under target CPA. Read 7-day retention by source to set month 2.</p></div>
     </div>
   </section>
- 
+
   <section id="risks">
     <h2>Risks and measurement</h2>
     <p class="sub">What could move these numbers, and how the plan is scored.</p>
@@ -352,7 +274,7 @@ footer{color:var(--fg-300);font-size:12px;border-top:1px solid var(--line-100);p
         </ul></div>
     </div>
   </section>
- 
+
   <section id="ads">
     <div class="eyebrow">Appendix</div>
     <h2>Ad examples by platform</h2>
@@ -362,7 +284,7 @@ footer{color:var(--fg-300);font-size:12px;border-top:1px solid var(--line-100);p
   </section>
 </main>
 <footer class="wrap">Benchmarks reflect tier-1 English-speaking markets for finance and crypto audiences, 2026. Scenario B and C apply +4% and +8% CPM and −2% and −4% CTR for inventory expansion and frequency. Sign-up rates assume a free testnet registration with no KYC.</footer>
- 
+
 <script>
 (function(){
 const ST={T:{n:"Awareness",c:"var(--tofu)"},M:{n:"Consideration",c:"var(--mofu)"},B:{n:"Conversion",c:"var(--bofu)"}};
@@ -389,7 +311,7 @@ function calc(k){const s=SC[k];let rows=[],t={b:0,i:0,c:0,v:0,s:0},st={T:0,M:0,B
   t.b+=b;t.i+=i;t.c+=cl;t.v+=v;t.s+=su;st[c[2]]+=b;});
  return{rows,t,st};}
 const R={A:calc("A"),B:calc("B"),C:calc("C")};
- 
+
 function render(k){
  const r=R[k],t=r.t;
  document.querySelectorAll(".seg button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.s===k));
@@ -411,7 +333,7 @@ function render(k){
  document.querySelectorAll(".sc").forEach(el=>el.style.outline=el.dataset.s===k?"2px solid var(--lime-500)":"none");
  try{localStorage.setItem("jup-sc",k)}catch(e){}
 }
- 
+
 // static comparison
 const keys=["A","B","C"];
 document.getElementById("cmp").innerHTML=keys.map((k,i)=>{const t=R[k].t,p=i?R[keys[i-1]].t:null;
@@ -423,7 +345,7 @@ document.getElementById("cmp").innerHTML=keys.map((k,i)=>{const t=R[k].t,p=i?R[k
 const mi=Math.max(...keys.map(k=>R[k].t.i)),ms=Math.max(...keys.map(k=>R[k].t.s));
 document.getElementById("barImp").innerHTML=keys.map(k=>`<div class="row"><span>Scenario ${k} · ${$0(SC[k].b/1000)}k</span><div class="track"><div class="fill" style="width:${R[k].t.i/mi*100}%"></div></div><span class="val">${short(R[k].t.i)}</span></div>`).join("");
 document.getElementById("barSu").innerHTML=keys.map(k=>`<div class="row"><span>Scenario ${k} · ${$0(SC[k].b/1000)}k</span><div class="track"><div class="fill m" style="width:${R[k].t.s/ms*100}%"></div></div><span class="val">${f0(R[k].t.s)}</span></div>`).join("");
- 
+
 document.querySelectorAll(".seg button").forEach(b=>b.addEventListener("click",()=>render(b.dataset.s)));
 document.querySelectorAll(".sc").forEach(el=>{el.style.cursor="pointer";el.addEventListener("click",()=>render(el.dataset.s))});
 let init="B";try{const v=localStorage.getItem("jup-sc");if(SC[v])init=v}catch(e){}
@@ -441,7 +363,7 @@ function term(o){o=Object.assign({t:"BTC / USDT",px:"81,225",dec:".398",chg:"+0.
  <div><span class="px"><small>$</small>${o.px}<small>${o.dec}</small></span> <span class="up">${o.chg}</span></div>
  ${chart(o.seed,240,o.h)}<span class="lev">${o.lev}</span>${o.ud?'<div class="ud"><span class="u">▲ Up</span><span class="d">▼ Down</span></div>':""}</div>`}
 const logo=`<span style="display:inline-flex;align-items:center;gap:6px;font-weight:600"><i style="width:16px;height:16px;border-radius:50%;background:repeating-linear-gradient(135deg,#e3f984 0 4px,#0b0d11 4px 5.5px);display:inline-block"></i>jupiter<span style="color:#9bb33a">.</span>fun</span>`;
- 
+
 const P=[
 {id:"taboola",n:"Taboola",f:"Native · Awareness",title:"Taboola native widget",
  mocks:()=>`
@@ -529,7 +451,7 @@ const P=[
   <div style="height:70px;overflow:hidden;border-radius:10px">${term({seed:47,h:30,ud:false})}</div><span class="btn" style="background:#e3f984;color:#0b0d11">Claim Testnet Balance</span></div></div></div>`,
  b:[["Stage","Conversion · sign-up rate"],["Segments","Bouncers (home only) · Engaged (chart, ticket or leaderboard)"],["Dynamic field","Last asset viewed + live 24h change"],["CTA","Complete Sign Up / Claim Testnet Balance"],["Rules","Cap 3/day, refresh creative weekly, exclude sign-ups"]]}
 ];
- 
+
 const grid=document.getElementById("plats"),panel=document.getElementById("adpanel");
 grid.innerHTML=P.map(p=>`<button class="plat" id="pl-${p.id}" data-id="${p.id}" aria-expanded="false" aria-controls="adpanel"><span class="pn">${p.n}</span><span class="pf">${p.f}</span><span class="pc">Click to see ad examples →</span></button>`).join("");
 function open(id){const p=P.find(x=>x.id===id);
@@ -543,5 +465,3 @@ grid.addEventListener("click",e=>{const b=e.target.closest(".plat");if(!b)return
 </script>
 </body>
 </html>
- 
-Claude finished the response
