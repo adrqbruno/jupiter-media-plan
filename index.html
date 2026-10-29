@@ -1,0 +1,547 @@
+Claude
+/
+Bruno’s MacBook Air, Asleep or app closed
+Pasted text.txt
+Pasted text.txt
+TXT
+based on the media plan briefing, create a one pager media plan 
+/senior-media-planner
+ 
+
+For reference Budgets Scenarios:
+A - 20,000 USD
+B - 35,000 USD
+C - 42,000 USD
+
+heavy focus on brandformance, awareness generation and consideration leading to visits and sign ups.
+
+Come up with estimated impact results for Impressios and CTRs, CPM, CPC of the platforms listed as part of the media plan.
+
+For the outcome material in html navitational, use the Jupiter design system already in this project.
+
+Planning a one-page media plan layout.
+Planning a one-page media plan layout.
+I’ll build the Jupiter.fun one-pager media plan with three budget scenarios and estimated delivery per platform, styled with the project’s Jupiter design system.
+
+Created a file, used artifacts, and 2 more steps
+Jupiter.fun Media Plan
+Artifact
+·Only you
+The one-pager is published in the Jupiter Trade look. A sticky nav covers Overview, Allocation, Channel estimates, Scenarios, 30-day flight and Risks & KPIs, and an A/B/C switch updates every number on the page.
+
+Estimated delivery over an assumed 30-day flight
+
+A · $20k	B · $35k (recommended)	C · $42k
+Impressions	4.19M	7.33M	8.55M
+Blended CPM	$4.77	$4.78	$4.91
+Blended CTR	0.63%	0.59%	0.57%
+Blended CPC	$0.76	$0.81	$0.86
+Sign-ups	~1,230	~1,820	~2,000
+CPA	$16.24	$19.23	$21.03
+Awareness + consideration share	78%	82%	84%
+Allocation: the share going to awareness rises with budget, because retargeting volume is limited by how much traffic the upper funnel sends.
+Marginal cost: going from B to C costs about $39 per extra sign-up, against roughly $25 from A to B. That is why B is the recommendation.
+Reddit CTR target: the brief’s 2.0% is above what Reddit typically delivers. The plan models 0.6% for feed ads and 0.85% for conversation ads, and suggests 0.8% blended as the KPI.
+Ad policy: I listed this as a high risk. All four platforms restrict ads about crypto, leverage, and wager or bet language. Copy should lead with simulator and testnet framing, and the 1,000× claims should be cleared with each platform before launch.
+The benchmarks assume tier-1 English-speaking markets. If the plan should target other markets such as LATAM, the CPMs would change noticeably.
+
+The page is private until you share it from its Share menu.
+
+as appendix, use 
+/design-ads
+ skill and create some examples, mockups of the ads for each platform. make it interative like using the platform name and a CTA 'clicks to see ads example' and display those ads.
+
+Edited a file, ran a command, used artifacts
+Jupiter.fun Media Plan
+Artifact
+·Only you
+The media plan now has an Appendix · Ad examples section, linked from the nav. It has seven platform cards, each labelled “Click to see ad examples”. Clicking a card opens its mockups next to a short creative brief covering funnel stage, hook, emotional trigger, CTA and the first A/B test.
+
+Taboola: a below-article widget with a crypto-only and a cross-asset (NVDA + BTC) headline, plus an advertorial header.
+Reddit feed: a 1:1 image post and a 6-second 9:16 video for r/WallStreetBets.
+Reddit conversation: a promoted card placed inside an options thread, picking up the thread’s own question.
+Quora: a promoted answer to “best paper trading platforms for crypto”, plus an image ad.
+PMax prospecting: an 8-second YouTube Shorts storyboard in three frames, plus a 300×250 responsive display ad.
+PMax retargeting: a brand search ad and a 1:1 remarketing ad (“Your trading terminal is ready”).
+AdRoll: a 300×250 ad for bouncers, plus 160×600 and 728×90 dynamic ads that show the last asset viewed.
+Every ad uses the Jupiter look and shows a small terminal visual with a live-style chart. The copy uses “practice”, “testnet” and “no real funds” and avoids “wager”, to match the policy risk flagged in the plan. The platform frames are neutral stand-ins, not copies of each platform’s real interface.
+
+great, give me the html
+
+Shared a file, ran 2 commands
+Here’s jupiter-media-plan.html, a single file that opens in any browser, with all the CSS and JavaScript inside it. It has the plan, the A/B/C scenario switch and the interactive ad appendix. The only outside resource is the DM Sans font from Google Fonts; offline, it falls back to the system font.
+
+Jupiter media plan
+Code
+·HTML
+Claude is AI and can make mistakes.
+
+
+
+
+
+Jupiter media plan · HTML
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jupiter.fun Media Plan</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap">
+<style>
+/* Layout: one-pager on the Jupiter Trade system — sticky pill nav, scenario switch drives every number below it. Dark only by design. */
+:root{
+  --bg-000:#0b0d11;--bg-100:#0f1317;--bg-200:#151a1f;--bg-300:#1d2025;--bg-400:#252d33;
+  --line-100:#1f2429;--line-200:#31343b;
+  --fg-100:#f1f3f4;--fg-200:#9ba1a8;--fg-300:#6b7178;
+  --lime-500:#e3f984;--lime-ink:#0b0d11;--lime-300:#d7ed91;--lime-700:#5c6b3a;--lime-900:#23281b;
+  --mint-500:#38e8a8;--rose-500:#ff6b7d;--up-fg:#a8e06a;--down-fg:#f2647a;--banner-fg:#dfeac0;
+  --tofu:#e3f984;--mofu:#38e8a8;--bofu:#8fb4ff;
+  --sans:"DM Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r-md:16px;--r-lg:24px;--pill:999px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg-000);color:var(--fg-100);font:400 15px/22px var(--sans);font-variant-numeric:tabular-nums}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg-000)}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.strip{background:var(--lime-900);color:var(--banner-fg);font-size:13px;text-align:center;padding-block:6px}
+.strip b{font-weight:600}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg-000) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line-100)}
+header.top .wrap{display:flex;align-items:center;gap:16px;padding-block:12px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:8px;font-weight:600;font-size:19px;letter-spacing:-.01em}
+.logo i{width:22px;height:22px;border-radius:50%;background:repeating-linear-gradient(135deg,var(--lime-500) 0 5px,var(--bg-000) 5px 7px)}
+.logo span{color:var(--lime-500)}
+nav.sec{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1 1 auto;min-width:0}
+nav.sec a{color:var(--fg-200);text-decoration:none;padding:6px 14px;border-radius:var(--pill);white-space:nowrap;font-size:14px;transition:background .15s,color .15s}
+nav.sec a:hover,nav.sec a:focus-visible{background:var(--bg-300);color:var(--fg-100);outline:none}
+.seg{display:flex;gap:4px;background:var(--bg-200);border-radius:var(--pill);padding:4px}
+.seg button{font:500 14px/18px var(--sans);color:var(--fg-200);background:transparent;border:1px solid transparent;border-radius:var(--pill);padding:6px 12px;cursor:pointer;transition:background .15s,color .15s}
+.seg button[aria-pressed="true"]{background:var(--lime-900);border-color:var(--lime-700);color:var(--lime-300)}
+.seg button:focus-visible,nav.sec a:focus-visible{box-shadow:0 0 0 2px var(--bg-000),0 0 0 4px var(--lime-500)}
+main{display:grid;gap:32px;padding-block:32px 64px}
+section{scroll-margin-top:80px}
+h1{font-weight:500;font-size:clamp(30px,5vw,44px);line-height:1.1;letter-spacing:-.02em;margin:0;text-wrap:balance}
+h2{font-weight:500;font-size:22px;line-height:28px;margin:0 0 4px;text-wrap:balance}
+.sub{color:var(--fg-200);margin:0 0 16px;max-width:68ch}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-200);font-weight:500}
+.panel{background:var(--bg-100);border:1px solid var(--line-100);border-radius:var(--r-lg);padding:24px}
+.hero{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:end}
+.hero p{color:var(--fg-200);max-width:60ch;margin:12px 0 0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chip{background:var(--bg-400);border-radius:var(--pill);padding:5px 12px;font-size:13px;color:var(--fg-100)}
+.chip.on{background:var(--lime-900);border:1px solid var(--lime-700);color:var(--lime-300)}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.kpi{background:var(--bg-200);border-radius:var(--r-md);padding:16px}
+.kpi .l{font-size:13px;color:var(--fg-200)}
+.kpi .v{font-size:30px;line-height:36px;font-weight:500;letter-spacing:-.02em;margin-top:4px}
+.kpi .v small{font-size:16px;color:var(--fg-200);font-weight:400}
+.kpi .n{font-size:12px;color:var(--fg-300);margin-top:2px}
+.kpi.lime .v{color:var(--lime-500)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.thesis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.thesis .panel h3{font-size:16px;font-weight:600;margin:8px 0 6px}
+.thesis .panel p{margin:0;color:var(--fg-200);font-size:14px;line-height:21px}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;padding:3px 10px;border-radius:var(--pill);background:var(--bg-300);color:var(--fg-100)}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+/* funnel bar */
+.fbar{display:flex;height:44px;border-radius:var(--pill);overflow:hidden;gap:3px;margin:16px 0 12px}
+.fbar div{display:flex;align-items:center;padding:0 14px;font-size:13px;font-weight:600;color:var(--lime-ink);white-space:nowrap;min-width:0;overflow:hidden;transition:flex-basis .3s}
+.legend{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.legend .st{display:grid;gap:4px}
+.legend .st .amt{font-size:22px;font-weight:500}
+.legend .st .ch{font-size:13px;color:var(--fg-200)}
+/* table */
+.tbl{overflow-x:auto;border:1px solid var(--line-100);border-radius:var(--r-lg);background:var(--bg-100)}
+table{border-collapse:collapse;width:100%;min-width:980px;font-size:14px}
+th,td{padding:12px 14px;text-align:right;white-space:nowrap}
+th{font-weight:500;font-size:12px;color:var(--fg-200);letter-spacing:.04em;text-transform:uppercase;border-bottom:1px solid var(--line-100);position:sticky;top:0;background:var(--bg-100)}
+th:first-child,td:first-child{text-align:left}
+tbody tr{border-bottom:1px solid var(--line-100)}
+tbody tr:hover{background:var(--bg-200)}
+td .nm{font-weight:500;color:var(--fg-100)}
+td .ds{display:block;font-size:12px;color:var(--fg-300)}
+tr.grp td{background:var(--bg-000);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-200);text-align:left;padding-block:8px}
+tfoot td{font-weight:600;border-top:1px solid var(--line-200);background:var(--bg-200)}
+.rng{color:var(--fg-300);font-size:12px;display:block}
+.hl{color:var(--lime-500)}
+/* scenario compare */
+.cmp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.sc{background:var(--bg-100);border:1px solid var(--line-100);border-radius:var(--r-lg);padding:24px;display:grid;gap:12px;align-content:start}
+.sc.rec{border-color:var(--lime-700);background:linear-gradient(var(--lime-900),var(--bg-100) 55%)}
+.sc .top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.sc .bud{font-size:36px;line-height:40px;font-weight:500;letter-spacing:-.02em}
+.sc .bud small{color:var(--fg-200);font-size:20px}
+.sc dl{display:grid;grid-template-columns:1fr auto;gap:8px 12px;margin:0;font-size:14px}
+.sc dt{color:var(--fg-200)}
+.sc dd{margin:0;text-align:right;font-weight:500}
+.sc p{margin:0;font-size:14px;color:var(--fg-200);line-height:21px}
+.bars{display:grid;gap:10px;margin-top:8px}
+.bars .row{display:grid;grid-template-columns:140px 1fr 70px;gap:12px;align-items:center;font-size:13px}
+.bars .track{height:10px;background:var(--bg-300);border-radius:var(--pill);overflow:hidden}
+.bars .fill{height:100%;border-radius:var(--pill);background:var(--lime-500)}
+.bars .fill.m{background:var(--mint-500)}
+.bars .val{text-align:right;color:var(--fg-100)}
+ul.list{margin:0;padding-left:18px;display:grid;gap:8px;color:var(--fg-200);font-size:14px;line-height:21px}
+ul.list b{color:var(--fg-100);font-weight:500}
+.risk{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.risk .panel h3{font-size:16px;font-weight:600;margin:10px 0 6px}
+.risk .panel p{margin:0;font-size:14px;line-height:21px;color:var(--fg-200)}
+.sev{font-size:12px;font-weight:600;padding:3px 10px;border-radius:var(--pill)}
+.sev.h{background:#3a0810;color:var(--down-fg)}
+.sev.m{background:var(--lime-900);color:var(--lime-300)}
+.phase{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.ph{background:var(--bg-200);border-radius:var(--r-md);padding:16px;display:grid;gap:6px;align-content:start}
+.ph .w{font-size:12px;color:var(--fg-200);letter-spacing:.06em;text-transform:uppercase}
+.ph .t{font-weight:600}
+.ph .mix{display:flex;height:6px;border-radius:var(--pill);overflow:hidden;gap:2px}
+.ph p{margin:0;font-size:13px;color:var(--fg-200);line-height:19px}
+footer{color:var(--fg-300);font-size:12px;border-top:1px solid var(--line-100);padding-block:20px 40px}
+@media (max-width:900px){
+  .hero,.grid2,.cmp,.risk{grid-template-columns:1fr}
+  .thesis{grid-template-columns:1fr}
+  .kpis,.phase{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .legend{grid-template-columns:1fr}
+  .bars .row{grid-template-columns:110px 1fr 60px}
+}
+@media (max-width:520px){ .seg button{padding:6px 9px;font-size:13px} .kpi .v{font-size:24px} }
+/* appendix: ad examples */
+.plats{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.plat{all:unset;box-sizing:border-box;cursor:pointer;background:var(--bg-100);border:1px solid var(--line-100);border-radius:var(--r-md);padding:16px;display:grid;gap:6px;transition:background .15s,border-color .15s}
+.plat:hover{background:var(--bg-200)}
+.plat:focus-visible{box-shadow:0 0 0 2px var(--bg-000),0 0 0 4px var(--lime-500)}
+.plat[aria-expanded="true"]{background:var(--lime-900);border-color:var(--lime-700)}
+.plat .pn{font-weight:600;font-size:16px}
+.plat .pf{font-size:12px;color:var(--fg-200)}
+.plat .pc{font-size:13px;color:var(--lime-300);font-weight:500;display:flex;align-items:center;gap:6px;margin-top:4px}
+.plat[aria-expanded="true"] .pc{color:var(--lime-500)}
+.adpanel{margin-top:16px;background:var(--bg-100);border:1px solid var(--line-100);border-radius:var(--r-lg);padding:24px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px}
+.adpanel .ph-h{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.adpanel .ph-h h3{margin:0;font-size:20px;font-weight:500}
+.closeb{font:500 13px var(--sans);color:var(--fg-200);background:var(--bg-300);border:0;border-radius:var(--pill);padding:6px 14px;cursor:pointer}
+.closeb:focus-visible{box-shadow:0 0 0 2px var(--bg-000),0 0 0 4px var(--lime-500);outline:none}
+.mocks{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start;min-width:0}
+.mock{display:grid;gap:8px;min-width:0;max-width:100%}
+.mock .cap{font-size:12px;color:var(--fg-300);letter-spacing:.04em;text-transform:uppercase}
+.brief{background:var(--bg-200);border-radius:var(--r-md);padding:16px;display:grid;gap:12px;align-content:start}
+.brief dl{margin:0;display:grid;gap:10px}
+.brief dt{font-size:12px;color:var(--fg-200);text-transform:uppercase;letter-spacing:.05em}
+.brief dd{margin:2px 0 0;font-size:14px;line-height:20px}
+/* host frames: neutral light surfaces standing in for each platform */
+.host{--h-bg:#ffffff;--h-fg:#1a1c20;--h-mut:#6a6f76;--h-line:#e4e6ea;background:var(--h-bg);color:var(--h-fg);border-radius:14px;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;overflow:hidden;max-width:100%}
+.host .meta{font-size:12px;color:var(--h-mut)}
+.host .btn{display:inline-flex;align-items:center;justify-content:center;font-weight:600;font-size:13px;border-radius:999px;padding:7px 14px;background:#0b0d11;color:#e3f984;white-space:nowrap}
+/* mini terminal visual */
+.term{background:#0b0d11;color:#f1f3f4;font-family:var(--sans);display:grid;gap:6px;padding:12px;position:relative;overflow:hidden}
+.term .th{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#9ba1a8}
+.term .tk{display:flex;gap:6px;align-items:center;font-weight:500;color:#f1f3f4;font-size:12px}
+.term .tk i{width:14px;height:14px;border-radius:50%;background:#f7931a;display:inline-block}
+.term .tk i.nv{background:#76b900}
+.term .px{font-size:20px;font-weight:400;letter-spacing:-.02em}
+.term .px small{color:#9ba1a8;font-size:14px}
+.term .up{color:#a8e06a;font-size:11px;font-weight:500}
+.term svg{width:100%;height:auto;display:block}
+.term .ud{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.term .ud span{border-radius:999px;text-align:center;font-size:11px;font-weight:600;padding:5px}
+.term .ud .u{background:#38e8a8;color:#04301a}.term .ud .d{background:#151a1f;color:#9ba1a8}
+.term .lev{position:absolute;right:10px;top:38px;background:#e3f984;color:#0b0d11;font-weight:600;font-size:12px;border-radius:999px;padding:3px 9px}
+.term .tn{font-size:10px;color:#dfeac0;background:#23281b;border-radius:999px;padding:2px 8px;justify-self:start}
+@media (max-width:900px){.adpanel{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+ 
+<div class="strip"><b>Planning document</b> · Estimates based on market benchmarks · Not delivery guarantees</div>
+<header class="top">
+  <div class="wrap">
+    <div class="logo"><i aria-hidden="true"></i>jupiter<span>.</span></div>
+    <nav class="sec" aria-label="Sections">
+      <a href="#overview">Overview</a><a href="#allocation">Allocation</a><a href="#channels">Channel estimates</a><a href="#scenarios">Scenarios</a><a href="#flight">Flight</a><a href="#risks">Risks &amp; KPIs</a><a href="#ads">Appendix · Ad examples</a>
+    </nav>
+    <div class="seg" role="group" aria-label="Budget scenario">
+      <button id="sA" data-s="A" aria-pressed="false">A · $20k</button>
+      <button id="sB" data-s="B" aria-pressed="true">B · $35k</button>
+      <button id="sC" data-s="C" aria-pressed="false">C · $42k</button>
+    </div>
+  </div>
+</header>
+ 
+<main class="wrap">
+  <section id="overview" class="hero">
+    <div>
+      <div class="eyebrow">Brandformance media plan · 30-day flight · Prepared by AdRoq</div>
+      <h1>Build awareness that turns into testnet sign-ups</h1>
+      <p>Around 80% of spend sits in awareness and consideration across Taboola, Reddit, Quora and Google PMax. A lean retargeting layer on AdRoll and PMax converts the demand those channels create. Scenario <b id="heroSc" class="hl">B</b> is selected; switch above to compare.</p>
+      <div class="chips">
+        <span class="chip on">Crypto degens 18–38</span><span class="chip on">Retail equity traders 22–45</span><span class="chip">BTC · SOL · NVDA · TSLA</span><span class="chip">Up to 1,000× on testnet</span>
+      </div>
+    </div>
+    <div class="kpis" id="heroKpis"></div>
+  </section>
+ 
+  <section class="thesis" aria-label="Planning thesis">
+    <div class="panel"><span class="tag"><i class="dot" style="background:var(--tofu)"></i>Awareness · creates demand</span><h3>Own the trading feed</h3><p>Taboola on financial and crypto publishers plus Reddit feed in WSB, CryptoCurrency and Solana. Cheap reach, scored on CPM and CTR, and the audience pool every lower stage depends on.</p></div>
+    <div class="panel"><span class="tag"><i class="dot" style="background:var(--mofu)"></i>Consideration · captures intent</span><h3>Answer the paper-trading question</h3><p>Quora on paper-trading and leverage questions, Reddit conversation placements, and PMax custom-intent signals. Scored on qualified visits and first testnet trade.</p></div>
+    <div class="panel"><span class="tag"><i class="dot" style="background:var(--bofu)"></i>Conversion · harvests</span><h3>Close the visit</h3><p>AdRoll dynamic banners by asset viewed, plus PMax on first-party lists and brand terms. Capped near 18% of spend because its volume is limited by the traffic upstream.</p></div>
+  </section>
+ 
+  <section id="allocation" class="panel">
+    <h2>Funnel allocation</h2>
+    <p class="sub">Spend weighted toward demand creation. The share of top-funnel rises with budget, because extra dollars buy reach while the retargeting pool grows more slowly.</p>
+    <div class="fbar" id="fbar" aria-hidden="true"></div>
+    <div class="legend" id="legend"></div>
+  </section>
+ 
+  <section id="channels">
+    <h2>Channel estimates</h2>
+    <p class="sub">Delivery for the selected scenario. Sign-up ranges are ±25% around the point estimate. Visits assume 75–90% click-to-session match by channel.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Channel / line</th><th>Budget</th><th>Share</th><th>Impressions</th><th>CPM</th><th>CTR</th><th>Clicks</th><th>CPC</th><th>Visits</th><th>Sign-ups</th><th>CPA</th></tr></thead>
+      <tbody id="tbody"></tbody>
+      <tfoot><tr id="tfoot"></tr></tfoot>
+    </table></div>
+  </section>
+ 
+  <section id="scenarios">
+    <h2>Scenario comparison</h2>
+    <p class="sub">More budget buys more reach, with rising cost per sign-up. The marginal CPA shows what each extra tier costs per added user.</p>
+    <div class="cmp" id="cmp"></div>
+    <div class="grid2" style="margin-top:16px">
+      <div class="panel"><div class="eyebrow">Impressions by scenario</div><div class="bars" id="barImp"></div></div>
+      <div class="panel"><div class="eyebrow">Sign-ups by scenario</div><div class="bars" id="barSu"></div></div>
+    </div>
+  </section>
+ 
+  <section id="flight" class="panel">
+    <h2>30-day flight</h2>
+    <p class="sub">Front-load reach so the retargeting pools exist before conversion spend ramps. Same shape for all three scenarios.</p>
+    <div class="phase">
+      <div class="ph"><span class="w">Days 1–7</span><span class="t">Seed reach</span><div class="mix"><i style="flex:60;background:var(--tofu)"></i><i style="flex:32;background:var(--mofu)"></i><i style="flex:8;background:var(--bofu)"></i></div><p>Launch TOFU and MOFU. 4–6 creatives per channel. AdRoll and PMax RT on low caps while lists fill.</p></div>
+      <div class="ph"><span class="w">Days 8–14</span><span class="t">Read the signals</span><div class="mix"><i style="flex:48;background:var(--tofu)"></i><i style="flex:36;background:var(--mofu)"></i><i style="flex:16;background:var(--bofu)"></i></div><p>Cut placements under 0.25% CTR on Taboola. Move Reddit spend to the best 3 subreddits.</p></div>
+      <div class="ph"><span class="w">Days 15–22</span><span class="t">Shift to intent</span><div class="mix"><i style="flex:40;background:var(--tofu)"></i><i style="flex:38;background:var(--mofu)"></i><i style="flex:22;background:var(--bofu)"></i></div><p>PMax switches to first-trade as primary goal once it has 30+ conversions. Asset-specific retargeting creatives.</p></div>
+      <div class="ph"><span class="w">Days 23–30</span><span class="t">Harvest and learn</span><div class="mix"><i style="flex:38;background:var(--tofu)"></i><i style="flex:36;background:var(--mofu)"></i><i style="flex:26;background:var(--bofu)"></i></div><p>Scale the channels under target CPA. Read 7-day retention by source to set month 2.</p></div>
+    </div>
+  </section>
+ 
+  <section id="risks">
+    <h2>Risks and measurement</h2>
+    <p class="sub">What could move these numbers, and how the plan is scored.</p>
+    <div class="risk">
+      <div class="panel"><span class="sev h">High</span><h3>Ad policy on leverage, crypto and "wager" language</h3><p>Google, Reddit, Quora and Taboola restrict crypto, leveraged trading and gambling-like copy. Lead every ad with simulator and testnet framing ("practice", "paper trading", "no real funds"), keep "wager" and "bet" out of ads, and pre-clear 1,000× claims with each platform before launch. A disapproval in week 1 would delay the ramp shown above.</p></div>
+      <div class="panel"><span class="sev h">High</span><h3>Reddit CTR target of 2.0% is above market</h3><p>Reddit feed and conversation ads usually land around 0.4–1.0%. The plan uses 0.6% (feed) and 0.85% (conversation). We recommend resetting the KPI to 0.8% blended, with 1.2%+ treated as a winning creative.</p></div>
+      <div class="panel"><span class="sev m">Medium</span><h3>Retargeting saturation</h3><p>AdRoll and PMax RT depend on site traffic. At Scenario C, AdRoll frequency runs near 18 per user per month. Cap at 3 per day and rotate asset-specific creatives weekly.</p></div>
+      <div class="panel"><span class="sev m">Medium</span><h3>Concentration in Reddit and Taboola</h3><p>These two hold about half the budget. If either underdelivers, move budget to PMax prospecting, which has the widest inventory and recovers fastest.</p></div>
+    </div>
+    <div class="grid2" style="margin-top:16px">
+      <div class="panel"><div class="eyebrow">KPI tree</div>
+        <ul class="list" style="margin-top:12px">
+          <li><b>Awareness:</b> CPM and CTR. Taboola ≥ 0.40%, Reddit ≥ 0.8% blended, reach and frequency weekly.</li>
+          <li><b>Consideration:</b> cost per qualified visit (≥ 20s on site or chart interaction), Quora and PMax CVR.</li>
+          <li><b>Conversion:</b> cost per testnet sign-up, terminal conversion rate (visit → first trade).</li>
+          <li><b>Quality:</b> 7-day retention by source. Use it to weight budget in month 2, ahead of CPA alone.</li>
+        </ul></div>
+      <div class="panel"><div class="eyebrow">Tracking requirements</div>
+        <ul class="list" style="margin-top:12px">
+          <li><b>GA4 events:</b> sign_up, first_trade, leaderboard_view, asset_view (with ticker as a parameter).</li>
+          <li><b>Pixels:</b> Reddit, Quora, Taboola and AdRoll firing on sign_up, with server-side or CAPI where available.</li>
+          <li><b>Audiences:</b> bouncers vs engaged non-converters built from asset_view and order-form interaction.</li>
+          <li><b>Attribution:</b> UTMs on every line, plus a 30-day view-through read for Taboola and Reddit feed.</li>
+        </ul></div>
+    </div>
+  </section>
+ 
+  <section id="ads">
+    <div class="eyebrow">Appendix</div>
+    <h2>Ad examples by platform</h2>
+    <p class="sub">Mockups of the first creative wave, written to the plan's funnel stage for each line. Every ad leads with practice and testnet framing to pass platform review. Pick a platform to see its examples and the creative brief behind them.</p>
+    <div class="plats" id="plats"></div>
+    <div class="adpanel" id="adpanel" hidden></div>
+  </section>
+</main>
+<footer class="wrap">Benchmarks reflect tier-1 English-speaking markets for finance and crypto audiences, 2026. Scenario B and C apply +4% and +8% CPM and −2% and −4% CTR for inventory expansion and frequency. Sign-up rates assume a free testnet registration with no KYC.</footer>
+ 
+<script>
+(function(){
+const ST={T:{n:"Awareness",c:"var(--tofu)"},M:{n:"Consideration",c:"var(--mofu)"},B:{n:"Conversion",c:"var(--bofu)"}};
+// name, desc, stage, CPM, CTR, landing rate, sign-up CVR
+const CH=[
+ ["Taboola","Native advertorials · finance & crypto publishers","T",2.80,.0042,.78,.025],
+ ["Reddit · Feed","Image & video · WSB, CryptoCurrency, Solana","T",4.00,.0060,.80,.035],
+ ["Reddit · Conversation","Comment-thread placements · Options, DeFi, Futures","M",6.50,.0085,.82,.050],
+ ["Quora","Promoted answers · paper-trading & leverage topics","M",5.50,.0045,.85,.050],
+ ["Google PMax · Prospecting","Shorts, Display, Discover · custom intent","M",6.50,.0075,.75,.040],
+ ["Google PMax · Retargeting","1st-party lists + brand terms","B",12.00,.0250,.90,.140],
+ ["AdRoll","Dynamic HTML5 · bouncers & engaged non-converters","B",7.00,.0045,.85,.090]
+];
+const SC={
+ A:{b:20000,cm:1,tm:1,sp:[4400,3600,2400,1600,3600,2000,2400],name:"Focused launch",note:"Proves channel fit with fewer, deeper lines. Lowest CPA, but reach is thin for a brand story and retargeting pools stay small."},
+ B:{b:35000,cm:1.04,tm:.98,sp:[8000,7750,4200,3000,5750,2500,3800],name:"Brandformance balance",note:"Recommended. Enough frequency in Reddit and Taboola to build recall, with retargeting fed by real volume. Best mix of reach and cost per sign-up."},
+ C:{b:42000,cm:1.08,tm:.96,sp:[9800,9500,5200,3800,6800,2700,4200],name:"Scale for share of voice",note:"Maximum reach for a launch moment. The extra $7k mostly buys awareness; marginal sign-ups get noticeably more expensive."}
+};
+const f0=n=>Math.round(n).toLocaleString("en-US"), $0=n=>"$"+f0(n), $2=n=>"$"+n.toFixed(2), pc=n=>(n*100).toFixed(2)+"%";
+const short=n=>n>=1e6?(n/1e6).toFixed(2)+"M":n>=1e3?(n/1e3).toFixed(1)+"k":f0(n);
+function calc(k){const s=SC[k];let rows=[],t={b:0,i:0,c:0,v:0,s:0},st={T:0,M:0,B:0};
+ CH.forEach((c,j)=>{const b=s.sp[j],cpm=c[3]*s.cm,ctr=c[4]*s.tm,i=b/cpm*1000,cl=i*ctr,v=cl*c[5],su=v*c[6];
+  rows.push({n:c[0],d:c[1],st:c[2],b,cpm,ctr,i,cl,cpc:b/cl,v,su,cpa:b/su});
+  t.b+=b;t.i+=i;t.c+=cl;t.v+=v;t.s+=su;st[c[2]]+=b;});
+ return{rows,t,st};}
+const R={A:calc("A"),B:calc("B"),C:calc("C")};
+ 
+function render(k){
+ const r=R[k],t=r.t;
+ document.querySelectorAll(".seg button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.s===k));
+ document.getElementById("heroSc").textContent=k;
+ document.getElementById("heroKpis").innerHTML=[
+  ["Impressions",short(t.i),"Blended CPM "+$2(t.b/t.i*1000),1],
+  ["Clicks",short(t.c),"CTR "+pc(t.c/t.i)+" · CPC "+$2(t.b/t.c)],
+  ["Site visits",short(t.v),"Cost per visit "+$2(t.b/t.v)],
+  ["Testnet sign-ups",f0(t.s),"Range "+f0(t.s*.75)+"–"+f0(t.s*1.25)+" · CPA "+$2(t.b/t.s)]
+ ].map((x,i)=>`<div class="kpi${i==0?" lime":""}"><div class="l">${x[0]}</div><div class="v">${x[1]}</div><div class="n">${x[2]}</div></div>`).join("");
+ // funnel
+ document.getElementById("fbar").innerHTML=["T","M","B"].map(s=>`<div style="flex-basis:${r.st[s]/t.b*100}%;background:${ST[s].c}">${Math.round(r.st[s]/t.b*100)}%</div>`).join("");
+ document.getElementById("legend").innerHTML=["T","M","B"].map(s=>`<div class="st"><span class="tag"><i class="dot" style="background:${ST[s].c}"></i>${ST[s].n}</span><span class="amt">${$0(r.st[s])}</span><span class="ch">${r.rows.filter(x=>x.st===s).map(x=>x.n).join(" · ")}</span></div>`).join("");
+ // table
+ let h="";["T","M","B"].forEach(s=>{h+=`<tr class="grp"><td colspan="11"><i class="dot" style="background:${ST[s].c}"></i> ${ST[s].n} · ${$0(r.st[s])}</td></tr>`;
+  r.rows.filter(x=>x.st===s).forEach(x=>{h+=`<tr><td><span class="nm">${x.n}</span><span class="ds">${x.d}</span></td><td>${$0(x.b)}</td><td>${(x.b/t.b*100).toFixed(0)}%</td><td>${f0(x.i)}</td><td>${$2(x.cpm)}</td><td>${pc(x.ctr)}</td><td>${f0(x.cl)}</td><td>${$2(x.cpc)}</td><td>${f0(x.v)}</td><td>${f0(x.su)}<span class="rng">${f0(x.su*.75)}–${f0(x.su*1.25)}</span></td><td>${$2(x.cpa)}</td></tr>`;});});
+ document.getElementById("tbody").innerHTML=h;
+ document.getElementById("tfoot").innerHTML=`<td>Total · Scenario ${k}</td><td>${$0(t.b)}</td><td>100%</td><td class="hl">${f0(t.i)}</td><td>${$2(t.b/t.i*1000)}</td><td>${pc(t.c/t.i)}</td><td>${f0(t.c)}</td><td>${$2(t.b/t.c)}</td><td>${f0(t.v)}</td><td class="hl">${f0(t.s)}</td><td>${$2(t.b/t.s)}</td>`;
+ document.querySelectorAll(".sc").forEach(el=>el.style.outline=el.dataset.s===k?"2px solid var(--lime-500)":"none");
+ try{localStorage.setItem("jup-sc",k)}catch(e){}
+}
+ 
+// static comparison
+const keys=["A","B","C"];
+document.getElementById("cmp").innerHTML=keys.map((k,i)=>{const t=R[k].t,p=i?R[keys[i-1]].t:null;
+ const marg=p?`<dt>Marginal CPA vs ${keys[i-1]}</dt><dd>${$2((t.b-p.b)/(t.s-p.s))}</dd>`:`<dt>Marginal CPA</dt><dd>—</dd>`;
+ return `<div class="sc${k==="B"?" rec":""}" data-s="${k}"><div class="top"><span class="tag">Scenario ${k}</span>${k==="B"?'<span class="chip on">Recommended</span>':""}</div>
+ <div class="bud"><small>$</small>${f0(SC[k].b)}</div><div style="font-weight:600">${SC[k].name}</div>
+ <dl><dt>Impressions</dt><dd>${f0(t.i)}</dd><dt>Blended CPM</dt><dd>${$2(t.b/t.i*1000)}</dd><dt>Blended CTR</dt><dd>${pc(t.c/t.i)}</dd><dt>Blended CPC</dt><dd>${$2(t.b/t.c)}</dd><dt>Site visits</dt><dd>${f0(t.v)}</dd><dt>Sign-ups</dt><dd>${f0(t.s)}</dd><dt>CPA</dt><dd>${$2(t.b/t.s)}</dd>${marg}<dt>Awareness + consideration</dt><dd>${Math.round((R[k].st.T+R[k].st.M)/t.b*100)}%</dd></dl>
+ <p>${SC[k].note}</p></div>`}).join("");
+const mi=Math.max(...keys.map(k=>R[k].t.i)),ms=Math.max(...keys.map(k=>R[k].t.s));
+document.getElementById("barImp").innerHTML=keys.map(k=>`<div class="row"><span>Scenario ${k} · ${$0(SC[k].b/1000)}k</span><div class="track"><div class="fill" style="width:${R[k].t.i/mi*100}%"></div></div><span class="val">${short(R[k].t.i)}</span></div>`).join("");
+document.getElementById("barSu").innerHTML=keys.map(k=>`<div class="row"><span>Scenario ${k} · ${$0(SC[k].b/1000)}k</span><div class="track"><div class="fill m" style="width:${R[k].t.s/ms*100}%"></div></div><span class="val">${f0(R[k].t.s)}</span></div>`).join("");
+ 
+document.querySelectorAll(".seg button").forEach(b=>b.addEventListener("click",()=>render(b.dataset.s)));
+document.querySelectorAll(".sc").forEach(el=>{el.style.cursor="pointer";el.addEventListener("click",()=>render(el.dataset.s))});
+let init="B";try{const v=localStorage.getItem("jup-sc");if(SC[v])init=v}catch(e){}
+render(init);
+})();
+</script>
+<script>
+(function(){
+// mini terminal visual reused inside every ad
+function chart(seed,w,h){let p=[],y=h*.6,s=seed;for(let i=0;i<=40;i++){s=(s*9301+49297)%233280;y+=(s/233280-.46)*h*.14;y=Math.max(h*.12,Math.min(h*.9,y));p.push((i/40*w).toFixed(1)+","+y.toFixed(1))}
+ const last=p[p.length-1].split(",");
+ return `<svg viewBox="0 0 ${w} ${h}" aria-hidden="true"><line x1="0" x2="${w}" y1="${last[1]}" y2="${last[1]}" stroke="#e3f984" stroke-opacity=".35" stroke-dasharray="3 3"/><polyline points="${p.join(" ")}" fill="none" stroke="#e3f984" stroke-width="2" stroke-linejoin="round"/><circle cx="${last[0]}" cy="${last[1]}" r="3.5" fill="#e3f984"/></svg>`}
+function term(o){o=Object.assign({t:"BTC / USDT",px:"81,225",dec:".398",chg:"+0.54%",lev:"1,000×",seed:7,h:70,ud:true,nv:false},o);
+ return `<div class="term"><div class="th"><span class="tk"><i class="${o.nv?"nv":""}"></i>${o.t}</span><span class="tn">Testnet</span></div>
+ <div><span class="px"><small>$</small>${o.px}<small>${o.dec}</small></span> <span class="up">${o.chg}</span></div>
+ ${chart(o.seed,240,o.h)}<span class="lev">${o.lev}</span>${o.ud?'<div class="ud"><span class="u">▲ Up</span><span class="d">▼ Down</span></div>':""}</div>`}
+const logo=`<span style="display:inline-flex;align-items:center;gap:6px;font-weight:600"><i style="width:16px;height:16px;border-radius:50%;background:repeating-linear-gradient(135deg,#e3f984 0 4px,#0b0d11 4px 5.5px);display:inline-block"></i>jupiter<span style="color:#9bb33a">.</span>fun</span>`;
+ 
+const P=[
+{id:"taboola",n:"Taboola",f:"Native · Awareness",title:"Taboola native widget",
+ mocks:()=>`
+ <div class="mock" style="width:520px"><span class="cap">Below-article widget · 2 Jupiter variants</span>
+ <div class="host" style="padding:16px;display:grid;gap:10px"><div style="display:flex;justify-content:space-between;font-size:13px;font-weight:600"><span>Around the web</span><span class="meta">Sponsored links</span></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+   <div style="display:grid;gap:6px">${term({seed:11,h:56})}<b style="font-size:14px;line-height:19px">Traders are testing 1,000× setups on BTC before risking a cent</b><span class="meta">Jupiter.fun · Try the Trading Simulator</span></div>
+   <div style="display:grid;gap:6px">${term({t:"NVDA",px:"184",dec:".62",chg:"+1.12%",nv:true,seed:23,h:56,lev:"500×"})}<b style="font-size:14px;line-height:19px">NVDA or BTC: which moves faster today? Trade both on one free screen</b><span class="meta">Jupiter.fun · Try the Trading Simulator</span></div>
+  </div></div></div>
+ <div class="mock" style="width:300px"><span class="cap">Advertorial landing header</span>
+ <div class="host"><div style="padding:14px;display:grid;gap:8px"><span class="meta">Market notes · Sponsored by Jupiter.fun</span><b style="font-size:18px;line-height:23px">Volatility is back. Here is how scalpers practise it without real money.</b><span class="meta">4 min read</span></div>${term({seed:5,h:60,ud:false})}<div style="padding:14px"><span class="btn">Try the Trading Simulator →</span></div></div></div>`,
+ b:[["Stage","Awareness · CPM / CTR ≥ 0.40%"],["Hook angle","Curiosity: what other traders are doing with extreme leverage"],["Trigger","Curiosity + safety (no real money)"],["CTA","Try the Trading Simulator"],["First test","Crypto-only vs cross-asset (NVDA + BTC) headline"]]},
+{id:"reddit-feed",n:"Reddit · Feed",f:"Image & video · Awareness",title:"Reddit promoted post (feed)",
+ mocks:()=>`
+ <div class="mock" style="width:340px"><span class="cap">Image post · 1:1 · r/CryptoCurrency, r/Solana</span>
+ <div class="host"><div style="padding:12px 14px;display:grid;gap:6px"><div style="display:flex;align-items:center;gap:8px;font-size:12px"><b>u/jupiterfun</b><span class="meta">· Promoted</span></div><b style="font-size:16px;line-height:21px">BTC and NVDA on one screen. Up to 1,000× leverage. Testnet coins only.</b></div>
+ ${term({seed:3,h:110})}<div style="padding:10px 14px;display:flex;justify-content:space-between;align-items:center"><span class="meta">jupiter.fun</span><span class="btn">Play the Terminal</span></div></div></div>
+ <div class="mock" style="width:230px"><span class="cap">Video · 9:16 · 6s · r/WallStreetBets</span>
+ <div class="host" style="background:#0b0d11;color:#f1f3f4;aspect-ratio:9/16;display:grid;grid-template-rows:auto 1fr auto;padding:12px;gap:8px"><div style="font-size:11px;color:#9ba1a8">u/jupiterfun · Promoted</div>
+ <div style="display:grid;align-content:center;gap:10px"><b style="font-size:20px;line-height:24px;font-family:var(--sans)">Open a 1,000× long in 3 taps.</b>${term({seed:31,h:60,ud:true})}<span style="font-size:12px;color:#dfeac0">No real funds. Just your read on the chart.</span></div>
+ <span class="btn" style="background:#e3f984;color:#0b0d11">Play the Terminal</span></div></div>`,
+ b:[["Stage","Awareness · CTR ≥ 0.6% feed, 1.2% = winner"],["Hook angle","Speed and the 1,000× number, shown in the UI"],["Trigger","Gain + bragging rights (leaderboard)"],["CTA","Play the Terminal"],["First test","Static UI vs 6s screen recording; WSB copy vs crypto copy"]]},
+{id:"reddit-conv",n:"Reddit · Conversation",f:"Comment threads · Consideration",title:"Reddit conversation placement",
+ mocks:()=>`
+ <div class="mock" style="width:440px"><span class="cap">Inside a thread · r/Options, r/FuturesTrading</span>
+ <div class="host" style="padding:14px;display:grid;gap:12px;font-size:13px;line-height:19px">
+  <div><span class="meta">u/thetagang_99 · 3h</span><div>Anyone actually backtest a 0DTE NVDA play before sizing up?</div></div>
+  <div style="border:1px solid var(--h-line);border-radius:12px;padding:12px;display:grid;grid-template-columns:96px 1fr;gap:12px;align-items:center">
+   ${term({t:"NVDA",px:"184",dec:".6",chg:"+1.1%",nv:true,seed:41,h:40,ud:false,lev:"250×"})}
+   <div style="display:grid;gap:6px"><span class="meta">u/jupiterfun · Promoted</span><b>Paper-trade your NVDA thesis at up to 1,000× first. Testnet funds, live prices.</b><span class="btn" style="justify-self:start">Start Paper Trading</span></div></div>
+  <div><span class="meta">u/scalp_daddy · 2h</span><div>Paper first, always. Learned that the expensive way.</div></div>
+ </div></div>`,
+ b:[["Stage","Consideration · qualified visits"],["Hook angle","Answer the thread's own question: test before you size up"],["Trigger","Loss aversion"],["CTA","Start Paper Trading"],["First test","Options-specific copy vs futures-specific copy by subreddit"]]},
+{id:"quora",n:"Quora",f:"Promoted answers · Consideration",title:"Quora promoted answer",
+ mocks:()=>`
+ <div class="mock" style="width:460px"><span class="cap">Promoted answer · question targeting</span>
+ <div class="host" style="padding:16px;display:grid;gap:10px;font-size:14px;line-height:21px">
+  <b style="font-size:17px">What are the best paper trading platforms for crypto?</b>
+  <div style="display:flex;align-items:center;gap:8px"><span style="width:28px;height:28px;border-radius:50%;background:#0b0d11;display:inline-grid;place-items:center"><i style="width:16px;height:16px;border-radius:50%;background:repeating-linear-gradient(135deg,#e3f984 0 4px,#0b0d11 4px 5.5px)"></i></span><div><b style="font-size:13px">Jupiter.fun</b><div class="meta">Promoted · Testnet trading terminal</div></div></div>
+  <div>If you want to practise <b>high-leverage</b> setups, look for three things: live prices, short timeframes and a real liquidation price. Jupiter's testnet gives you all three:</div>
+  <ul style="margin:0;padding-left:18px"><li>BTC, SOL and NVDA, TSLA on one screen</li><li>Up to 1,000× with max-loss and profit limits</li><li>1s to 1h charts and a global leaderboard</li></ul>
+  ${term({seed:17,h:60,ud:false})}
+  <span class="btn" style="justify-self:start">Test Your Strategy</span></div></div>
+ <div class="mock" style="width:260px"><span class="cap">Image ad · topic targeting</span>
+ <div class="host"><div style="padding:12px;display:grid;gap:4px"><span class="meta">Jupiter.fun · Promoted</span><b style="font-size:15px;line-height:20px">Test your leverage strategy before you risk real cash</b></div>${term({seed:29,h:56})}<div style="padding:12px"><span class="btn">Test Your Strategy</span></div></div></div>`,
+ b:[["Stage","Consideration · CVR from qualified visits"],["Hook angle","Helpful answer first, product as the proof"],["Trigger","Authority + safety"],["CTA","Test Your Strategy"],["First test","Educational answer vs comparison-list answer"]]},
+{id:"pmax-pro",n:"Google PMax · Prospecting",f:"Shorts, Display, Discover · Consideration",title:"PMax prospecting assets",
+ mocks:()=>`
+ <div class="mock" style="width:520px"><span class="cap">YouTube Shorts · 9:16 · 8s storyboard</span>
+ <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+  ${[["0–2s","1,000× on BTC.<br>Zero real money.",term({seed:2,h:40,ud:false})],["2–5s","Pick a side. Set max loss. Go.",term({seed:9,h:40})],["5–8s","Try testnet free",`<div style="display:grid;place-items:center;gap:8px;padding:14px 0">${logo.replace(/#9bb33a/,"#e3f984").replace("font-weight:600","font-weight:600;color:#f1f3f4")}<span class="btn" style="background:#e3f984;color:#0b0d11">Try Testnet Free</span></div>`]].map(f=>`<div class="host" style="background:#0b0d11;color:#f1f3f4;aspect-ratio:9/16;padding:10px;display:grid;grid-template-rows:auto auto 1fr;gap:8px"><span style="font-size:10px;color:#9ba1a8">${f[0]}</span><b style="font-family:var(--sans);font-size:14px;line-height:18px">${f[1]}</b><div style="align-self:center">${f[2]}</div></div>`).join("")}
+ </div></div>
+ <div class="mock" style="width:300px"><span class="cap">Responsive display · 300×250</span>
+ <div class="host" style="width:300px;height:250px;background:#0b0d11;color:#f1f3f4;display:grid;grid-template-rows:auto 1fr auto;padding:12px;gap:6px">
+  <div style="display:flex;justify-content:space-between;align-items:center">${logo.replace("font-weight:600","font-weight:600;color:#f1f3f4;font-size:13px")}<span style="font-size:10px;color:#dfeac0">Testnet</span></div>
+  ${term({seed:13,h:52,ud:false})}
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><b style="font-family:var(--sans);font-size:13px;line-height:16px">Crypto + stocks. Up to 1,000×. No real funds.</b><span class="btn" style="background:#e3f984;color:#0b0d11">Try free</span></div></div></div>`,
+ b:[["Stage","Consideration → sign-up · CPA"],["Hook angle","Show the terminal working in the first 2 seconds"],["Trigger","Speed + gain"],["CTA","Try Testnet Free"],["Asset set","5 headlines, 5 long headlines, 3 Shorts, 1:1 + 1.91:1 + 4:5 images, logo"]]},
+{id:"pmax-rt",n:"Google PMax · Retargeting",f:"Lists + brand terms · Conversion",title:"PMax retargeting and brand search",
+ mocks:()=>`
+ <div class="mock" style="width:460px"><span class="cap">Search · brand and high-intent terms</span>
+ <div class="host" style="padding:16px;display:grid;gap:4px;font-size:14px;line-height:20px">
+  <span class="meta" style="font-size:12px"><b style="color:var(--h-fg)">Sponsored</b> · jupiter.fun › testnet</span>
+  <b style="font-size:18px;color:#1a4fd6;font-weight:500">Jupiter Testnet Trading | Sign Up Free in Seconds</b>
+  <span>Trade BTC, SOL, NVDA and TSLA side by side at up to 1,000×. Testnet funds only, no deposit, no setup.</span>
+  <span style="color:#1a4fd6;font-size:13px">Leaderboard · Live markets · How it works</span></div></div>
+ <div class="mock" style="width:300px"><span class="cap">Remarketing display · 1:1</span>
+ <div class="host" style="width:300px;aspect-ratio:1;background:#0b0d11;color:#f1f3f4;padding:14px;display:grid;grid-template-rows:auto 1fr auto;gap:8px">
+  <b style="font-family:var(--sans);font-size:20px;line-height:24px">Your trading terminal is ready.</b>${term({seed:19,h:64})}
+  <span class="btn" style="background:#e3f984;color:#0b0d11">Sign Up Free</span></div></div>`,
+ b:[["Stage","Conversion · lowest CPA"],["Hook angle","Finish what you started"],["Trigger","Low friction (sign up in seconds)"],["CTA","Sign Up Free"],["First test","'Your terminal is ready' vs leaderboard rank teaser"]]},
+{id:"adroll",n:"AdRoll",f:"Dynamic HTML5 · Conversion",title:"AdRoll dynamic retargeting banners",
+ mocks:()=>`
+ <div class="mock" style="width:300px"><span class="cap">300×250 · Bouncers</span>
+ <div class="host" style="width:300px;height:250px;background:#0b0d11;color:#f1f3f4;padding:14px;display:grid;grid-template-rows:auto auto 1fr auto;gap:6px">
+  ${logo.replace("font-weight:600","font-weight:600;color:#f1f3f4;font-size:13px")}<b style="font-family:var(--sans);font-size:18px;line-height:22px">Sign up in 5 seconds. Trade at 1,000× on testnet.</b>${term({seed:37,h:44,ud:false})}<span class="btn" style="background:#e3f984;color:#0b0d11">Complete Sign Up</span></div></div>
+ <div class="mock" style="width:160px"><span class="cap">160×600 · Engaged</span>
+ <div class="host" style="width:160px;height:600px;background:#0b0d11;color:#f1f3f4;padding:12px;display:grid;grid-template-rows:auto auto 1fr auto auto;gap:10px">
+  ${logo.replace("font-weight:600","font-weight:600;color:#f1f3f4;font-size:12px")}<b style="font-family:var(--sans);font-size:18px;line-height:22px">SOL is moving.</b>
+  <div style="align-self:center">${term({t:"SOL",px:"212",dec:".44",chg:"+2.31%",seed:43,h:90,lev:"1,000×"})}</div>
+  <span style="font-size:12px;color:#9ba1a8">Your testnet balance is waiting.</span><span class="btn" style="background:#e3f984;color:#0b0d11">Claim Balance</span></div></div>
+ <div class="mock" style="width:728px"><span class="cap">728×90 · Engaged · dynamic asset from last view</span>
+ <div style="overflow-x:auto;max-width:100%"><div class="host" style="width:728px;height:90px;background:#0b0d11;color:#f1f3f4;padding:10px 16px;display:grid;grid-template-columns:auto 1fr 200px auto;gap:16px;align-items:center">
+  ${logo.replace("font-weight:600","font-weight:600;color:#f1f3f4;font-size:14px")}<b style="font-family:var(--sans);font-size:18px;line-height:22px">BTC is moving. Take your 1,000× test trade now.</b>
+  <div style="height:70px;overflow:hidden;border-radius:10px">${term({seed:47,h:30,ud:false})}</div><span class="btn" style="background:#e3f984;color:#0b0d11">Claim Testnet Balance</span></div></div></div>`,
+ b:[["Stage","Conversion · sign-up rate"],["Segments","Bouncers (home only) · Engaged (chart, ticket or leaderboard)"],["Dynamic field","Last asset viewed + live 24h change"],["CTA","Complete Sign Up / Claim Testnet Balance"],["Rules","Cap 3/day, refresh creative weekly, exclude sign-ups"]]}
+];
+ 
+const grid=document.getElementById("plats"),panel=document.getElementById("adpanel");
+grid.innerHTML=P.map(p=>`<button class="plat" id="pl-${p.id}" data-id="${p.id}" aria-expanded="false" aria-controls="adpanel"><span class="pn">${p.n}</span><span class="pf">${p.f}</span><span class="pc">Click to see ad examples →</span></button>`).join("");
+function open(id){const p=P.find(x=>x.id===id);
+ grid.querySelectorAll(".plat").forEach(b=>{const on=b.dataset.id===id;b.setAttribute("aria-expanded",on);b.querySelector(".pc").textContent=on?"Showing examples ↓":"Click to see ad examples →"});
+ if(!p){panel.hidden=true;return}
+ panel.innerHTML=`<div class="ph-h"><h3>${p.title}</h3><button class="closeb" id="adclose">Close</button></div><div class="mocks">${p.mocks()}</div><aside class="brief"><div class="eyebrow">Creative brief</div><dl>${p.b.map(x=>`<div><dt>${x[0]}</dt><dd>${x[1]}</dd></div>`).join("")}</dl></aside>`;
+ panel.hidden=false;document.getElementById("adclose").onclick=()=>{open(null);document.getElementById("pl-"+id).focus()};
+ panel.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth",block:"nearest"});}
+grid.addEventListener("click",e=>{const b=e.target.closest(".plat");if(!b)return;open(b.getAttribute("aria-expanded")==="true"?null:b.dataset.id)});
+})();
+</script>
+</body>
+</html>
+ 
+Claude finished the response
